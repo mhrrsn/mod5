@@ -2,7 +2,16 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
-app.use('/', express.static('public'));
+const swaggerUi = require('swagger-ui-express');
+swaggerDocument = require('./swagger.json');
+
+app.use('/'.express.static('public'));
+
+app.use(
+    '/api-docs',
+    swaggerUi.serve,
+    swaggerUi.setup(swaggerDocument)
+);
 
 const calculatorRoutes = require('./routes/calculatorRoutes.js');
 app.use('/calculator', calculatorRoutes);
@@ -38,18 +47,6 @@ app2.listen(port2, () => {
 });
 
 */
-
-/*
-const swaggerUi = require('swagger-ui-express');
-swaggerDocument = require('./swagger.json');
-
-app.use(
-    '/api-docs',
-    swaggerUi.serve,
-    swaggerUi.setup(swaggerDocument)
-);
-
-app.use('/', express.static('public'));
 
 /* Earlier segment of Mod 5
 const testRoutes = require('./routes/myTestRoutes');
