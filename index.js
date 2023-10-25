@@ -2,19 +2,23 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
-const express = require("express");
+app.listen(port, () => {
+    console.log(`Main app listenting at http://localhost:${port}`)
+});
+
+
 const friendRoutes = require('./routes/friendRoutes');
 
 const friendApp = express();
-const friendPort = 5000;
+const friendPort = 5555;
 
 friendApp.use(express.json());
 
 friendApp.use('/', express.static('public'));
-friendApp/use('/friends', friendRoutes);
+friendApp.use('/friends', friendRoutes);
 
-friendApp.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`);
+friendApp.listen(friendPort, () => {
+    console.log(`Example app listening at http://localhost:${friendPort}`);
 });
 
 /*
@@ -51,9 +55,7 @@ const calculatorRoutes = require('./routes/calculatorRoutes.js');
 app.use('/calculator', calculatorRoutes);
 
 
-app.listen(port, () => {
-    console.log(`Example app listenting at http://localhost:${port}`)
-});
+
 */
 
 
