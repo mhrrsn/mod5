@@ -2,11 +2,16 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
+app.use('/', express.static('public'));
+
+const calculatorRoutes = require('./routes/calculatorRoutes.js');
+app.use('/calculator', calculatorRoutes);
+
 app.listen(port, () => {
     console.log(`Main app listenting at http://localhost:${port}`)
 });
 
-
+/*
 const friendRoutes = require('./routes/friendRoutes');
 
 const friendApp = express();
@@ -20,6 +25,7 @@ friendApp.use('/friends', friendRoutes);
 friendApp.listen(friendPort, () => {
     console.log(`Example app listening at http://localhost:${friendPort}`);
 });
+*/
 
 /*
 Exercise 1 (More than 1 port)
@@ -48,14 +54,6 @@ app.use('/', express.static('public'));
 /* Earlier segment of Mod 5
 const testRoutes = require('./routes/myTestRoutes');
 app.use('/mytest', testRoutes);
-*/
-
-/*
-const calculatorRoutes = require('./routes/calculatorRoutes.js');
-app.use('/calculator', calculatorRoutes);
-
-
-
 */
 
 
